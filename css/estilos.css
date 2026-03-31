@@ -1,0 +1,690 @@
+/* ========================================
+   css/estilos.css - Versión Completa
+   Proyecto: Sistema de Usuarios
+   ======================================== */
+
+/* ----------------------------------------
+   RESET Y ESTILOS BASE
+   ---------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ----------------------------------------
+   CONTENEDORES PRINCIPALES
+   ---------------------------------------- */
+
+/* Contenedor estándar (para formularios, perfiles, etc.) */
+.contenedor {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+/* Contenedor para listas (más ancho) */
+.contenedor-lista {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 95%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+/* Contenedor específico para tablas grandes */
+.contenedor-tabla {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    width: 95%;
+    max-width: 1400px;
+    margin: 20px auto;
+    overflow-x: auto;
+}
+
+/* ----------------------------------------
+   HEADER Y NAVEGACIÓN
+   ---------------------------------------- */
+.site-header {
+    background-color: #f0f0f0;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-menu {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.nav-menu a:hover {
+    background-color: #667eea;
+    color: white;
+}
+
+.nav-menu a.cerrar-sesion {
+    color: #c00;
+}
+
+.nav-menu a.cerrar-sesion:hover {
+    background-color: #c00;
+    color: white;
+}
+
+/* ----------------------------------------
+   FOOTER
+   ---------------------------------------- */
+.site-footer {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+    font-size: 0.9em;
+    border-top: 1px solid #ddd;
+    margin-top: auto;
+    background-color: #f8f8f8;
+}
+
+.site-footer p {
+    margin: 5px 0;
+}
+
+/* ----------------------------------------
+   TÍTULOS
+   ---------------------------------------- */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+/* ----------------------------------------
+   FORMULARIOS
+   ---------------------------------------- */
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+}
+
+.campo label {
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+.campo input,
+.campo textarea {
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.campo input:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.campo small {
+    color: #666;
+    font-size: 0.85em;
+    margin-top: 5px;
+}
+
+.campo.error input,
+.campo.error textarea {
+    border-color: #f56565;
+}
+
+.boton {
+    background: #667eea;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.boton:hover {
+    background: #5a67d8;
+}
+
+.boton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* ----------------------------------------
+   MENSAJES DE ERROR Y ÉXITO
+   ---------------------------------------- */
+.mensaje-error {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #f56565;
+}
+
+.mensaje-exito {
+    background-color: #c6f6d5;
+    color: #276749;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border-left: 4px solid #48bb78;
+}
+
+.mensaje-error ul {
+    margin-left: 20px;
+    margin-top: 5px;
+}
+
+.mensaje-exito.hidden {
+    display: none;
+}
+
+/* ----------------------------------------
+   TABLA DE USUARIOS
+   ---------------------------------------- */
+
+/* Contenedor con scroll horizontal */
+.tabla-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 700px; /* Mayor ancho mínimo para 5 columnas */
+}
+
+.tabla-usuarios th {
+    background-color: #667eea;
+    color: white;
+    padding: 15px 12px;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.tabla-usuarios td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+/* Distribución de columnas */
+.tabla-usuarios th:first-child,
+.tabla-usuarios td:first-child {
+    width: 8%;
+    text-align: center;
+    font-weight: 600;
+}
+
+.tabla-usuarios th:nth-child(2),
+.tabla-usuarios td:nth-child(2) {
+    width: 20%;
+}
+
+.tabla-usuarios th:nth-child(3),
+.tabla-usuarios td:nth-child(3) {
+    width: 32%;
+    word-break: break-word;
+}
+
+.tabla-usuarios th:nth-child(4),
+.tabla-usuarios td:nth-child(4) {
+    width: 25%;
+    white-space: nowrap;
+    font-size: 0.9rem;
+}
+
+.tabla-usuarios th:nth-child(5),
+.tabla-usuarios td:nth-child(5) {
+    width: 15%;
+    text-align: center;
+}
+
+.tabla-usuarios tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* ----------------------------------------
+   ACCIONES Y BOTONES
+   ---------------------------------------- */
+
+/* Contenedor de acciones para la tabla */
+.acciones-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botones de acción */
+.btn-accion {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+    min-width: 60px;
+    text-align: center;
+}
+
+.btn-accion:hover {
+    background-color: #5a67d8;
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: white;
+}
+
+.btn-accion.editar {
+    background-color: #48bb78;
+}
+
+.btn-accion.editar:hover {
+    background-color: #38a169;
+}
+
+.btn-accion.eliminar {
+    background-color: #f56565;
+}
+
+.btn-accion.eliminar:hover {
+    background-color: #e53e3e;
+}
+
+/* Enlaces generales */
+.enlace {
+    display: inline-block;
+    margin-top: 20px;
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.enlace:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+/* Grupos de enlaces */
+.volver {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.volver-flex {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+/* ----------------------------------------
+   CONTADOR DE VISITAS
+   ---------------------------------------- */
+.contador-container {
+    text-align: center;
+    padding: 40px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    margin: 30px 0;
+}
+
+.contador-numero {
+    font-size: 4em;
+    font-weight: bold;
+    color: #667eea;
+    margin: 20px 0;
+}
+
+.contador-texto {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.contador-leyenda {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* ----------------------------------------
+   LOGS DE VISITAS
+   ---------------------------------------- */
+.logs-container {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.logs-stats {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.logs-lista {
+    max-height: 500px;
+    overflow-y: auto;
+    background-color: #2d2d2d;
+    color: #f0f0f0;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+.log-item {
+    padding: 3px 0;
+    border-bottom: 1px solid #444;
+}
+
+.log-item.contador {
+    color: #90ee90;
+}
+
+/* ----------------------------------------
+   ESTADÍSTICAS (INDEX)
+   ---------------------------------------- */
+.stats-numero {
+    font-size: 3rem;
+    color: #667eea;
+    margin: 10px 0;
+}
+
+.stats-fecha {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 10px 0;
+}
+
+.stats-descripcion {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+/* ----------------------------------------
+   CARACTERÍSTICAS (INDEX)
+   ---------------------------------------- */
+.caracteristicas-section {
+    margin-top: 3rem;
+}
+
+.caracteristicas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.caracteristica-card {
+    flex: 1 1 250px;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.caracteristica-titulo {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.caracteristica-lista {
+    margin-left: 1.5rem;
+    color: #555;
+    line-height: 1.8;
+}
+
+.caracteristica-lista li {
+    margin-bottom: 0.3rem;
+}
+
+/* ----------------------------------------
+   PERFIL DE USUARIO
+   ---------------------------------------- */
+.perfil-header {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.perfil-avatar {
+    width: 100px;
+    height: 100px;
+    background: #667eea;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.avatar-inicial {
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+}
+
+.perfil-info {
+    flex: 1;
+}
+
+.perfil-nombre {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.perfil-email,
+.perfil-fecha {
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.publicaciones-titulo {
+    margin: 2rem 0 1rem 0;
+    color: #333;
+}
+
+.post-fecha {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 1rem;
+}
+
+/* ----------------------------------------
+   UTILIDADES
+   ---------------------------------------- */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+/* ----------------------------------------
+   MEDIA QUERIES - RESPONSIVE
+   ---------------------------------------- */
+
+/* Tablet */
+@media screen and (max-width: 1024px) {
+    .contenedor-tabla,
+    .contenedor-lista {
+        max-width: 95%;
+        padding: 25px;
+    }
+    
+    .tabla-usuarios th,
+    .tabla-usuarios td {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .btn-accion {
+        padding: 5px 10px;
+        font-size: 0.8rem;
+        min-width: 50px;
+    }
+}
+
+/* Móvil grande / Tablet pequeña */
+@media screen and (max-width: 768px) {
+    .nav-menu ul {
+        gap: 15px;
+    }
+    
+    .contenedor-tabla,
+    .contenedor-lista {
+        padding: 20px;
+    }
+    
+    .tabla-usuarios th,
+    .tabla-usuarios td {
+        padding: 8px 6px;
+        font-size: 0.85rem;
+    }
+    
+    .tabla-usuarios th:nth-child(3),
+    .tabla-usuarios td:nth-child(3) {
+        max-width: 150px;
+    }
+    
+    .perfil-header {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .perfil-avatar {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .avatar-inicial {
+        font-size: 2.5rem;
+    }
+}
+
+/* Móvil */
+@media screen and (max-width: 480px) {
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+    
+    .nav-menu a {
+        display: block;
+        padding: 8px 16px;
+    }
+    
+    .contenedor,
+    .contenedor-lista,
+    .contenedor-tabla {
+        padding: 20px 15px;
+        width: 95%;
+    }
+    
+    .tabla-container {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+    }
+    
+    .tabla-usuarios th,
+    .tabla-usuarios td {
+        padding: 8px 5px;
+        font-size: 0.8rem;
+    }
+    
+    .btn-accion {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+        min-width: 45px;
+    }
+    
+    .acciones-container {
+        gap: 4px;
+    }
+    
+    .volver-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .volver-flex .enlace {
+        margin: 0;
+    }
+}

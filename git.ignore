@@ -1,0 +1,3 @@
+config/conexion.php
+.env
+vendor/
